@@ -7,5 +7,37 @@
   </head>
   <body>
     <h1>{{'Hello, Angular!'}}</h1></body>
+  <script type='text/javascript'>
+(function() {
+  var TestImage = '/image.png';
+  var start;
+  var end;
+  var timediff;
+
+  preLoadImages1 = function() {
+    start = new Date();
+    for (var i = 10000; i--;) {
+      var cacheImage = document.createElement('img');
+      cacheImage.src = TestImage;
+    }
+    end = new Date();
+    timediff = end - start;
+    write("Création de 10 000 images avec createElement : ")+timediff;
+  }
+
+  preLoadImages2 = function() {
+    start = new Date();
+    for (var i = 10000; i--;) {
+      var cacheImage = new Image();
+      cacheImage.src = TestImage;
+    }
+    end = new Date();
+    timediff = end - start;
+    write("Création de 10 000 images avec new Image : ")+timediff;
+  preLoadImages1();
+  preLoadImages2();
+})();
+      
+      </script>
   </body>
 </html>
